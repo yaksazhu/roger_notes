@@ -18,6 +18,7 @@ Git连接为：https://github.com/TMRh20/RF24.git
 
 #2 连接
 nRF24L01引脚图
+
 | net  | #    | #    | net  |
 | :--  | :--: | :--: | :--  |
 | IRQ  | 8    | 7    | MISO |
