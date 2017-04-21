@@ -4,8 +4,8 @@
 Git是目前世界上最先进的分布式版本控制系统
 (版本控制系统，其实只能跟踪文本文件的改动)
 
-#1. 安装git
-##1.1 Linux
+# 1. 安装git
+## 1.1 Linux
 ```Bash
 $ sudo apt-get install git
 $ git --version 
@@ -16,31 +16,31 @@ $ ./config
 $ make
 $ sudo make install
 ```
-##1.2 windows
+## 1.2 windows
 Windows下要使⽤用很多Linux/Unix的工具时，需要Cygwin这样的模拟环境，Git也一样。
 有人已经把模拟环境和Git都打包好了，名叫msysgit，只需要下载一个单独的exe安装程序，其他什么也不用装
 msysgit是Windows版的Git，从 http://msysgit.github.io/ 下载，然后按默认选项安装即可。
 安装完成后，使用 开始菜单 -> “Git” -> “Git Bash”来运行
 
-###1.2.1 命令提示符PS1
+### 1.2.1 命令提示符PS1
 安装了cygwin，发现命令提示符和用户名机器名不在同一行显示, 而且花花绿绿的太晃眼.
 可以设置环境变量PS1，写入.bashrc中
 ```Bash
 export PS1='[\u@\h \w]$ '                # [Roger@Roger-T450s /e/MyDocs/git_test]$
 export PS1='\[\033[32m\]\$ \[\033[0m\]'  # 只显示一个绿色的$
 ```
-###1.2.2 Cygwin乱码
+### 1.2.2 Cygwin乱码
 Option => Text:
 Locale=C，Character Set=GBK
 
-##1.3 设置用户名和邮箱
+## 1.3 设置用户名和邮箱
 安装完成后，还需要最后一步设置，在命令行输入：
 ```Bash
 $ git config --global user.name "Your Name"
 $ git config --global user.email "email@example.com"
 ```
-#2. 使用git
-##2.1 init---创建版本库(repository)
+# 2. 使用git
+## 2.1 init---创建版本库(repository)
 版本库可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪
 ```Bash
 $ mkdir git_test
@@ -48,7 +48,7 @@ $ cd git_test/
 $ git init        # 把这个目录变成Git可以管理的仓库
 Initialized empty Git repository in E:/MyDocs/git_test/.git/ 
 ```
-##2.2 add & commit---把文件添加到版本库
+## 2.2 add & commit---把文件添加到版本库
 ```Bash
 $ git add readme.txt
 warning: LF will be replaced by CRLF in readme.txt.
@@ -59,7 +59,7 @@ $ git commit -m "wrote a readme file"  #把文件提交到仓库
  create mode 100644 readme.txt 
 ```
 
-##2.3 status & diff---查看更改内容
+## 2.3 status & diff---查看更改内容
 修改一下readme.txt
 ```Bash
 $ git status
@@ -96,7 +96,7 @@ $ git status
 On branch master
 nothing to commit, working tree clean
 ```
-##2.4 log---查看改动历史记录
+## 2.4 log---查看改动历史记录
 修改readme.txt, 然后git add, git commit
 可以用git log查看改动历史记录 (加上--pretty=oneline参数)
 ```Bash
@@ -120,7 +120,7 @@ efc5467d007b8116447b4f527065118a1750d9bb wrote a readme file
 ```
 git的commit ID不是1、2、3……递增的数字, 而是一个SHA1计算出来的非常大的十六进制数.
 
-##2.5 reset---版本回退
+## 2.5 reset---版本回退
 在Git中，用HEAD表示当前版本(最新的),
 上一个版本就是HEAD^，上上一个版本就是HEAD^^, 上100个版本写成HEAD~100
 ```Bash
@@ -145,7 +145,8 @@ ceb257f517c67d149a608cb1c97a565eb5df9b55 add a word --- distributed
 efc5467d007b8116447b4f527065118a1750d9bb wrote a readme file
 ```
 Git的版本回退速度非常快，因为Git在内部有个指向当前版本的HEAD指针，当你回退版本的时候，Git仅仅是把HEAD从指向“append GPL”改为指向“add distributed”
-
+![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/Git的版本回退_1_20161122.png)
+![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/Git的版本回退_2_20161122.png)
 如果命令行窗口已经关闭了, 找不到commit ID了怎么办?
 ```Bash
 $ git reflog
@@ -155,7 +156,7 @@ df04479 HEAD@{2}: commit: append GPL
 ceb257f HEAD@{3}: commit: add a word --- distributed
 efc5467 HEAD@{4}: commit (initial): wrote a readme file
 ```
-##2.6 工作区&暂存区
+## 2.6 工作区&暂存区
 工作区（Working Directory）：就是你在电脑里能看到的目录
 版本库（Repository）：工作区有一个隐藏目录“.git”，这个不算工作区，而是Git的版本库。
 
@@ -164,11 +165,11 @@ Git的版本库里存了很多东西，其中最重要的就是称为stage（或
 第二步“git commit”，实际上就是把暂存区的所有内容提交到当前分支。暂存区就没有任何内容了
 
 
-##2.7 管理修改
+## 2.7 管理修改
 为什么Git比其他版本控制系统设计得优秀，因为<font color=red>Git跟踪并管理的是修改，而非文件</font>。
 每次修改，如果不add到暂存区，那就不会加入到commit中
 
-##2.8 checkout---撤销(工作区的)修改
+## 2.8 checkout---撤销(工作区的)修改
 ```Bash
 $ git checkout -- readme.txt
 ```
@@ -189,7 +190,7 @@ git checkout -- readme.txt
 场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，①`git reset HEAD file` ②按场景1操作。
 场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。
 
-##2.9 rm---删除文件
+## 2.9 rm---删除文件
 ```Bash
 $ git rm test.txt
 rm 'test.txt'
@@ -197,11 +198,11 @@ $ git commit -m "remove test.txt"
 ```
 文件就从版本库中被删除了(本地的test.txt也被删除)
 
-#3. 远程仓库GitHub
+# 3. 远程仓库GitHub
 可以自己搭建一台运行Git的服务器，不过现阶段，为了学Git先搭个服务器绝对是小题大作。
 GitHub就是提供Git仓库托管服务的，所以，只要注册一个GitHub账号，就可以免费获得Git远程仓库。
 
-##3.1 创建远程仓库
+## 3.1 创建远程仓库
 
 由于你的本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以，需要一点设置：
 第1步：创建SSH Key。
@@ -216,7 +217,7 @@ GitHub允许你添加多个Key。假定你有多个电脑，你可以在公司�
 最后友情提示，在GitHub上免费托管的Git仓库，任何人都可以看到（但只有你自己才能改）。所以，不要把敏感信息放进去。
 如果你不想让别人看到Git库，有两个办法，⼀一个是交费，让GitHub把公开的仓库变成私有的，这样别人就看不见了（不可读更不可写）。另一个办法是自己动手，搭一个Git服务器
 
-##3.2 添加远程库 & 推送
+## 3.2 添加远程库 & 推送
 你已经在本地创建了一个Git仓库后，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人
 通过该仓库来协作
 1. 登陆GitHub，在右上角找到“Create a new repo”按钮，创建一个新的仓库, 如: git_test_2016
@@ -248,7 +249,7 @@ $ git push origin master  #把本地master分支的最新修改推送至GitHub
 `$ git remote add origin https://github.com/yaksazhu/git_test_2016.git`
 `$ git remote add origin git@github.com:yaksazhu/git_test_2016.git`
 
-##3.3 从远程库克隆
+## 3.3 从远程库克隆
 上次我们讲了先有本地库，后有远程库的时候，如何关联远程库。
 现在，假设我们从零开发，那么最好的方式是先创建远程库，然后，从远程库克隆。
 1. 登陆GitHub，创建一个新的仓库，名字叫gitskills (勾选Initialize this repository with a README，这样GitHub会自动为我们创建一个
@@ -258,10 +259,10 @@ README.md文件)
 $ git clone git@github.com:yaksazhu@163.com/gitskills.git
 ```
 
-#4. 分支管理
+# 4. 分支管理
 Git的分支是与众不同的，无论创建、切换和删除分支，Git在1秒钟之内就能完成！⽆无论你的版本库是1个文件还是1万个文件。
 
-##4.1 创建与合并分支
+## 4.1 创建与合并分支
 HEAD严格来说不是指向提交，而是指向master，master才是指向提交的，所以，HEAD指向的就是当前分支。
 ```
 查看分支:           git branch
@@ -327,7 +328,7 @@ $ git branch
 
 因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。
 
-##4.2 解决冲突
+## 4.2 解决冲突
 ```Bash
 $ git checkout -b conflict
 # 修改LICENSE.txt
@@ -395,8 +396,8 @@ $ git log --graph --pretty=oneline --abbrev-commit
 然后，可以删除feature1分支了
 `$ git branch -d feature1`
 
-##4.3 分支管理策略
-###4.3.1 普通模式合并
+## 4.3 分支管理策略
+### 4.3.1 普通模式合并
 小结:合并分支时，加上`--no-ff`参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，⽽而fast forward合并就看不出来曾经做过合并。
 
 通常，合并分支时，如果可能，Git会用“Fast forward”模式，但这种模式下，删除分支后，会丢掉分支信息。
@@ -440,13 +441,13 @@ $ git log --graph --pretty=oneline --abbrev-commit
 不使⽤用“Fast forward”模式，merge后就像这样
 
 
-###4.3.2 分支策略---master分支、dev分支、个人分支
+### 4.3.2 分支策略---master分支、dev分支、个人分支
 1. master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；
 2. 干活都在dev分支上，也就是说，dev分支是不稳定的，到某个时候，⽐比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；
 3. 每个工作人员都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并
 团队合作的分支看起来就像这样:
 
-##4.4 bug分支
+## 4.4 bug分支
 在Git中，由于分支是如此的强大，所以每个bug都可以通过一个新的临时分支来修复，修复后，合并分支，然后将临时分支删除。
 场景：
 1. 你正在dev上进行的工作进行到一半, 预计还需1天才能完成, 不能提交
@@ -508,7 +509,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 Dropped refs/stash@{0} (c0cbe2b234fb6e5b45ae086cc2f571600bb438ce) 
 ```
 
-##4.5 Feature分支(新功能实验分支)
+## 4.5 Feature分支(新功能实验分支)
 添加一个新功能时，你肯定不希望因为一些实验性质的代码，把主分支搞乱了
 所以，每添加一个新功能，最好新建一个feature分支，在上面开发，完成后合并，最后再删除该feature分支。
 ```Bash
@@ -528,10 +529,10 @@ $ git branch -D feature-wifi
 Deleted branch feature-wifi (was 0a51ec8).
 ```
 
-##4.6 多人协作
+## 4.6 多人协作
 当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来
 了，并且远程仓库的默认名称是origin。
-###4.6.1 查看远程库的信息
+### 4.6.1 查看远程库的信息
 ```Bash
 $ git remote
 origin
@@ -540,7 +541,7 @@ origin  https://github.com/yaksazhu/git_test_2016.git (fetch)
 origin  https://github.com/yaksazhu/git_test_2016.git (push)
 ```
 
-###4.6.2 推送分支
+### 4.6.2 推送分支
 ```Bash
 $ git push origin dev
 Username for 'https://github.com': yaksazhu
@@ -559,7 +560,7 @@ To https://github.com/yaksazhu/git_test_2016.git
 • bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；
 • feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。
 
-###4.6.3 抓取分支
+### 4.6.3 抓取分支
 ```Bash
 $ git clone git@github.com:michaelliao/learngit.git
 
@@ -571,7 +572,7 @@ $ git commit -m "add xxxx"
 $ git push origin dev
 ```
 
-###4.6.4 推送冲突
+### 4.6.4 推送冲突
 如果你的合作者已经向origin/dev分支推送了他的提交，而碰巧你也对同样的文件作了修改，并试图推送, 会导致推送失败
 ```Bash
 $ git add xxxx
@@ -619,13 +620,13 @@ To git@github.com:michaelliao/learngit.git
 3. 如合并有冲突，则解决冲突，并在本地提交；
 4. 解决掉冲突后，再用git push origin branch-name推送就能成功！
 
-#5. 标签管理
+# 5. 标签管理
 发布一个版本时，我们通常先在版本库中打一个标签，这样，就唯一确定了打标签时刻的版本。
 将来⽆无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。
 所以，标签也是版本库的一个快照。
 Git的标签虽然是版本库的快照，但其实它就是指向某个commit的指针，所以，创建和删除标签都是瞬间完成的。
 （跟分支很像对不对？但是分支可以移动，标签不能移动）
-##5.1 创建标签
+## 5.1 创建标签
 ```Bash
 # ① 切换到需要打标签的分支上
 $ git checkout master
@@ -650,7 +651,7 @@ Author: Roger Zhu <yaksazhu@163.com>
 Date:   Thu Sep 22 10:06:39 2016 +0800
     merge with no-ff 
 ```
-##5.2 操作标签
+## 5.2 操作标签
 ```Bash
 # 删除标签
 $ git tag -d v0.90
@@ -671,12 +672,12 @@ To github.com:yaksazhu/git_test_2016.git
 ```
 要看看是否真的从远程库删除了标签，可以登陆GitHub查看
 
-#6. 使用GitHub
+# 6. 使用GitHub
 其实GitHub还是一个开源协作社区，通过GitHub，既可以让别人参与你的开源项目，也可以参与别人的开源项目。
 在GitHub出现以前，开源项目开源容易，但让⼲广大人民群众参与进来比较困难，因为要参与，就要提交代码，而给每个想提交代码的群众都开一个账号那是不现实的，因此群众也仅限于报个bug，即使能改掉bug，也只能把diff文件用邮件发过去，很不方便。
 但是在GitHub上，利用Git极其强大的克隆和分支功能，人们真正可以自由参与各种开源项目了。
 
-##6.1 如何参与一个开源项目呢？
+## 6.1 如何参与一个开源项目呢？
 访问一个项目的主页，点Fork就在自己的账号下克隆了一个仓库，然后从自己的账号下clone到本地
 ```Bash
 git clone git@github.com:michaelliao/bootstrap.git
@@ -688,11 +689,11 @@ git clone git@github.com:michaelliao/bootstrap.git
 你修复了一个bug，或者新增了一个功能，可以往自己的仓库推送。
 如果你希望官方库能接受你的修改，你就可以在GitHub上发起一个pull request。
 
-#7. 自定义Git
-##7.1 让Git显示颜色
+# 7. 自定义Git
+## 7.1 让Git显示颜色
 `$ git config --global color.ui true`
 
-##7.2 忽略特殊文件(不需提交的文件)
+## 7.2 忽略特殊文件(不需提交的文件)
 在Git工作区的根目录下创建一个`.gitignore`文件，然后把要忽略的文件名填进去，再把它也提交，Git就会自动忽略这些文件。
 不需要从头写`.gitignore`文件，GitHub已经为我们准备了各种配置文件，只需要组合一下就可以使用了。
 所有配置文件可以直接在线浏览：https://github.com/github/gitignore
@@ -718,7 +719,7 @@ build
 db.ini
 deploy_key_rsa
 ```
-##7.3 配置别名
+## 7.3 配置别名
 ```Bash
 $ git config --global alias.st status  # st就代表了status
 $ git config --global alias.co checkout
@@ -731,10 +732,10 @@ $ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Cre
 ```
 
 
-#8. 搭建Git服务器
+# 8. 搭建Git服务器
 既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。
 
-##8.1 搭建Git服务器
+## 8.1 搭建Git服务器
 ```Bash
 # 第一步，安装git：
 $ sudo apt-get install git
@@ -767,12 +768,12 @@ warning: You appear to have cloned an empty repository.
 # 剩下的推送就简单了。
 ```
 
-##8.2 管理公钥
+## 8.2 管理公钥
 如果团队很小，把每个人的公钥收集起来放到服务器的/home/git/.ssh/authorized_keys文件里就是可行的。
 如果团队有几百号人，就没法这么玩了，这时，可以用Gitosis来管理公钥。
 这里我们不介绍怎么玩 Gitosis了，几百号人的团队基本都在500强了，相信找个高水平的Linux管理员问题不大。
 
-##8.3 管理权限
+## 8.3 管理权限
 有很多不但视源代码如生命，而且视员工为窃贼的公司，会在版本控制系统里设置一套完善的权限控制，每个人是否有读写权限会精确到每个分支甚至每个目录下。
 因为Git是为Linux源代码托管而开发的，所以Git也继承了开源社区的精神，不支持权限控制。
 不过，因为Git支持钩⼦子（hook），所以，可以在服务器端编写一系列脚本来控制提交等操作，达到权限控制的目的。Gitolite就是这个工具。
