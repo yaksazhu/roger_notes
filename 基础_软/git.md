@@ -146,8 +146,8 @@ efc5467d007b8116447b4f527065118a1750d9bb wrote a readme file
 ```
 Git的版本回退速度非常快，因为Git在内部有个指向当前版本的HEAD指针，当你回退版本的时候，Git仅仅是把HEAD从指向“append GPL”改为指向“add distributed”
 
-![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/Git的版本回退_1_20161122.png)
-![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/Git的版本回退_2_20161122.png)
+![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/git/Git的版本回退_1_20161122.png)
+![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/git/Git的版本回退_2_20161122.png)
 
 如果命令行窗口已经关闭了, 找不到commit ID了怎么办?
 ```Bash
@@ -166,8 +166,8 @@ Git的版本库里存了很多东西，其中最重要的就是称为stage（或
 第一步“git add”，实际上就是把文件修改添加到暂存区（Stage）；
 第二步“git commit”，实际上就是把暂存区的所有内容提交到当前分支。暂存区就没有任何内容了
 
-![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/4723f3cc-b334-49f8-ae03-152fbda07189.png)
-![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/f1d42f1d-81bf-408c-a93b-9e50165a74ef.png)
+![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/git/4723f3cc-b334-49f8-ae03-152fbda07189.png)
+![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/git/f1d42f1d-81bf-408c-a93b-9e50165a74ef.png)
 
 ## 2.7 管理修改
 为什么Git比其他版本控制系统设计得优秀，因为<font color=red>Git跟踪并管理的是修改，而非文件</font>。
@@ -279,27 +279,27 @@ HEAD严格来说不是指向提交，而是指向master，master才是指向提�
 
 ①每次提交，master分支都会向前移动一步，这样，随着你不断提交，master分支的线也越来越长。
 
-![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/f7124622-616a-424b-9bec-2e553d6721d2.png)
+![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/git/f7124622-616a-424b-9bec-2e553d6721d2.png)
 
 ②创建新的分支---dev时，Git新建了一个指针叫dev，指向master相同的提交，再把HEAD指向dev，就表示当前分支在dev上
 (Git创建一个分支很快，因为除了增加一个dev指针，改改HEAD的指向，工作区的文件都没有任何变化！)
 
-![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/5c1bb063-5c06-4e26-867c-74b241e1599d.png)
+![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/git/5c1bb063-5c06-4e26-867c-74b241e1599d.png)
 
 ③从现在开始，对工作区的修改和提交就是针对dev分支了，比如新提交一次后，dev指针往前移动一步，而master指针不变
 
-![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/af53dc48-3e61-471e-880a-7aacf3406ed7.png)
+![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/git/af53dc48-3e61-471e-880a-7aacf3406ed7.png)
 
 ④假如我们在dev上的工作完成了，就可以把dev合并到master上。
 Git怎么合并呢？最简单的方法，就是直接把master指向dev的当前提交，就完成了合并
 (Git合并分支也很快！就改改指针，工作区内容也不变！)
 
-![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/8dc83247-499c-4a22-ad60-66d80e1b9698.png)
+![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/git/8dc83247-499c-4a22-ad60-66d80e1b9698.png)
 
 ⑤合并完分支后，甚至可以删除dev分支。
 删除dev分支就是把dev指针给删掉，删掉后，我们就剩下了一条master分支：
 
-![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/7891c973-a6a7-476d-9604-0e78704a50a0.png)
+![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/git/7891c973-a6a7-476d-9604-0e78704a50a0.png)
 
 ```Bash
 # ②创建&切换到dev分支.
@@ -353,7 +353,7 @@ $ git commit -m "conflict test_master--LICENSE.txt"
 ```
 如上, 2个分支各有新的提交, 变成这样:
 
-![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/063bcfb4-1f34-4e75-a9be-be28b746bade.png)
+![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/git/063bcfb4-1f34-4e75-a9be-be28b746bade.png)
 
 这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突:
 ```Bash
@@ -388,7 +388,7 @@ $ git commit -m "解决冲突问题"
 ```
 现在，master分支和feature1分支变成了这样：
 
-![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/e8e39926-f935-4643-982e-9b4e8d706056.png)
+![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/git/e8e39926-f935-4643-982e-9b4e8d706056.png)
 
 用带参数的git log也可以看到分支的合并情况：
 ```Bash
@@ -455,7 +455,7 @@ $ git log --graph --pretty=oneline --abbrev-commit
 ```
 不使⽤用“Fast forward”模式，merge后就像这样
 
-![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/adbf4bb2-890c-4f60-890a-86eacbef93a4.png)
+![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/git/adbf4bb2-890c-4f60-890a-86eacbef93a4.png)
 
 ### 4.3.2 分支策略---master分支、dev分支、个人分支
 1. master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；
@@ -463,7 +463,7 @@ $ git log --graph --pretty=oneline --abbrev-commit
 3. 每个工作人员都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并
 团队合作的分支看起来就像这样:
 
-![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/79c03f78-63f9-4edb-9b87-cf184223946c.png)
+![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/git/79c03f78-63f9-4edb-9b87-cf184223946c.png)
 
 ## 4.4 bug分支
 在Git中，由于分支是如此的强大，所以每个bug都可以通过一个新的临时分支来修复，修复后，合并分支，然后将临时分支删除。
@@ -704,7 +704,7 @@ git clone git@github.com:michaelliao/bootstrap.git
 地址git@github.com:twbs/bootstrap.git克隆，因为没有权限，你将不能推送修改。
 官方仓库、你在GitHub上克隆的仓库、以及你自己克隆到本地的仓库，它们的关系如下图所示：
 
-![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/2016-09-22_162118.gif)
+![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/git/2016-09-22_162118.gif)
 
 你修复了一个bug，或者新增了一个功能，可以往自己的仓库推送。
 如果你希望官方库能接受你的修改，你就可以在GitHub上发起一个pull request。
@@ -751,7 +751,7 @@ $ git config --global alias.last 'log -1' #显示最近一次的提交
 $ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 ```
 
-![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/2016-09-22_164949.gif)
+![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/git/2016-09-22_164949.gif)
 
 # 8. 搭建Git服务器
 既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。
