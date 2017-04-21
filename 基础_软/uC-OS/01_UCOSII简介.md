@@ -5,7 +5,8 @@ uC/OS II是一个:
 * 实时多任务内核
 
 #1. uC/OS II体系结构
-![](../../PICs/uC-OSII体系结构图_2017-04-20.png "uC/OS II体系结构图)
+![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/uC-OSII体系结构图_2017-04-20.png)
+
 uC/OS II的移植，只需要修改三个文件即可：
 * os_cpu.h: 进行数据类型的定义，以及处理器相关代码和几个函数原型
 * os_cpu_a.asm: 需要汇编完成的一些函数，主要就是任务切换函数
@@ -39,7 +40,7 @@ void MyTask (void *pdata)
 4. 等待状态: (阻塞)正在运行的任务, 因为需要等待一段时间or需要等待一个事件发生再运行 (把CPU的使用权让给了别的任务)
 5. 中断服务状态: (挂起)正在运行的任务响应了中断申请 (被中止运行, 而去执行中断服务程序)
 下图是剔除了睡眠态的"任务状态转换图", 因为睡眠态的转换就是靠create和del. 可见转换关系还是比较简单的.
-!(../../PICs/uC-OSII%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%9B%BE_2017-04-20.png)
+![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/uC-OSII任务状态转换图_2017-04-20.png)
 注:
 <font color=blue>
 * 优先级是任务的"身份证号", 任务控制块OS_TCB是"身份证"
