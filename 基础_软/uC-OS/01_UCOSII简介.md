@@ -4,7 +4,7 @@ uC/OS II是一个:
 * 抢占式
 * 实时多任务内核
 
-#1. uC/OS II体系结构
+#1. uC/OS II体系结构#
 ![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/uC-OSII体系结构图_2017-04-20.png)
 
 uC/OS II的移植，只需要修改三个文件即可：
@@ -12,7 +12,7 @@ uC/OS II的移植，只需要修改三个文件即可：
 * os_cpu_a.asm: 需要汇编完成的一些函数，主要就是任务切换函数
 * os_cpu.c: 定义一些用户HOOK函数
 
-#2. 定时器
+# 2. 定时器 #
 定时器的作用是为uC/OS II提供系统时钟节拍(实现任务切换和任务延时等功能)
 一般uC/OS II的系统时钟节拍为1ms~100ms
 利用STM32F4的SYSTICK定时器来提供时钟节拍
