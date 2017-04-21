@@ -703,6 +703,7 @@ git clone git@github.com:michaelliao/bootstrap.git
 一定要从自己的账号下clone仓库，这样你才能推送修改。如果从bootstrap的作者的仓库
 地址git@github.com:twbs/bootstrap.git克隆，因为没有权限，你将不能推送修改。
 官方仓库、你在GitHub上克隆的仓库、以及你自己克隆到本地的仓库，它们的关系如下图所示：
+
 ![](https://github.com/yaksazhu/roger_notes/blob/master/PICs/2016-09-22_162118.gif)
 
 你修复了一个bug，或者新增了一个功能，可以往自己的仓库推送。
